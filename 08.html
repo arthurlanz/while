@@ -1,0 +1,27 @@
+<script>
+    /*
+    PROBLEMA: SOMA DE NÚMEROS ATÉ UM LIMITE
+    O programa solicita números ao usuário e soma-os continuamente.
+    A execução para quando o usuário inserir 0 e então exibe a soma total.
+    */
+
+    //ENTRADA
+    let soma = 0;
+
+    //PROCESSAMENTO
+    while (true) {
+        let numero = Number(prompt("Informe um número (Digite 0 para finalizar):"));
+
+        if (isNaN(numero)) {
+            alert("Entrada inválida! Digite um número.");
+            continue;
+        }
+
+        if (numero === 0) break;
+
+        soma += numero;
+    }
+
+    //SAÍDA
+    document.write(`Soma total: ${soma}`);
+</script>

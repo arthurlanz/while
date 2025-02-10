@@ -2,15 +2,27 @@
 <script>
     /*
     PROBLEMA: VALIDAR SENHA
-    Faça um programa que receba uma senha formada de quatro números inteiros, verifique se a senha está correta e, caso não esteja, solicite novamente a senha. Se a senha entrada for a correta, deverá ser apresentada a mensagem “Senha Correta”, caso contrário, “Senha Incorreta”.
+    Faça um programa que receba uma senha formada de quatro números inteiros, 
+    verifique se a senha está correta e, caso não esteja, solicite novamente a senha. 
+    Se a senha entrada for a correta, deverá ser apresentada a mensagem “Senha Correta”, 
+    caso contrário, “Senha Incorreta”.
     */
 
     //ENTRADA
+    const senhaCorreta = "1311"; // Mantemos como string para comparação exata
 
+    let senha;
 
     //PROCESSAMENTO
+    while (true) {
+        senha = prompt("Insira a senha de 4 números inteiros:");
 
-
+        if (senha.length === 4 && senha === senhaCorreta) {
+            alert("Senha correta.");
+            break;
+        } else {
+            alert("Senha incorreta. Tente novamente.");
+        }
+    }
     //SAÍDA
-
 </script>

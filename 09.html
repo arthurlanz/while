@@ -1,0 +1,32 @@
+<script>
+    /*
+    PROBLEMA: ACERTAR O NÚMERO
+    O computador escolhe um número aleatório de 1 a 30, e o usuário precisa adivinhar.
+    O programa fornece dicas ("maior" ou "menor") até que o usuário acerte.
+    */
+
+    //ENTRADA
+    let computador = Math.floor(Math.random() * 30) + 1;
+    let numeroAleatorio;
+
+    //PROCESSAMENTO
+    while (true) {
+        numeroAleatorio = Number(prompt("Adivinhe o número (entre 1 e 30):"));
+
+        if (isNaN(numeroAleatorio) || numeroAleatorio < 1 || numeroAleatorio > 30) {
+            alert("Entrada inválida! Digite um número entre 1 e 30.");
+            continue;
+        }
+
+        if (numeroAleatorio < computador) {
+            alert("Tente um número maior.");
+        } else if (numeroAleatorio > computador) {
+            alert("Tente um número menor.");
+        } else {
+            alert(`Parabéns! Você acertou o número ${computador}!`);
+            document.write(`Você acertou! <br> Número escolhido: ${computador}.`);
+            break;
+        }
+    }
+    //SAÍDA
+</script>

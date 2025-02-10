@@ -10,7 +10,7 @@
     3. Nulo
     4. Branco
     Entre com o seu voto:
-
+    
     O programa deverá ler os votos dos eleitores e, quando for entrado o número 0, apresentar as seguintes
     informações:
     a) O número de votos de cada candidato;
@@ -19,12 +19,68 @@
     d) O candidato vencedor.
     */
 
-    //ENTRADA
-
+    //ENTRADAS
+    let votosJoaozinho = 0;
+    let votosMariazinha = 0;
+    let votosNulos = 0;
+    let votosBrancos = 0;
+    let votosTotais = 0;
 
     //PROCESSAMENTO
+    while (true) {
+        let voto = prompt(`As opções são:
+        1. Candidato Joãozinho
+        2. Candidato Mariazinha
+        3. Nulo
+        4. Branco
+        0. Encerrar votação
+        Entre com o seu voto:`);
 
+        // Converte para número e verifica se é válido
+        if (voto === null || voto.trim() === "" || isNaN(voto)) {
+            alert("Entrada inválida! Digite um número.");
+            continue;
+        }
 
+        voto = parseInt(voto);
+
+        if (voto === 1) {
+            votosJoaozinho++;
+        } else if (voto === 2) {
+            votosMariazinha++;
+        } else if (voto === 3) {
+            votosNulos++;
+        } else if (voto === 4) {
+            votosBrancos++;
+        } else if (voto === 0) {
+            break;
+        } else {
+            alert("Opção inválida! Escolha um número entre 0 e 4.");
+            continue;
+        }
+        
+        votosTotais++;
+    } 
+
+    let porcentagemBrancos = votosTotais ? (votosBrancos / votosTotais) * 100 : 0;
+    let porcentagemNulos = votosTotais ? (votosNulos / votosTotais) * 100 : 0;
+
+    let vencedor;
+    if (votosJoaozinho > votosMariazinha) {
+        vencedor = "Joãozinho";
+    } else if (votosMariazinha > votosJoaozinho) {
+        vencedor = "Mariazinha";
+    } else {
+        vencedor = "Houve empate";
+    }
+    
     //SAÍDA
-
+    document.write(`
+        <h2>Resultados da Eleição</h2>
+        <p><strong>Votos Joãozinho:</strong> ${votosJoaozinho}</p>
+        <p><strong>Votos Mariazinha:</strong> ${votosMariazinha}</p>
+        <p><strong>Porcentagem de votos nulos:</strong> ${porcentagemNulos.toFixed(2)}%</p>
+        <p><strong>Porcentagem de votos brancos:</strong> ${porcentagemBrancos.toFixed(2)}%</p>
+        <h3><strong>Candidato vencedor:</strong> ${vencedor}</h3>
+    `);
 </script>

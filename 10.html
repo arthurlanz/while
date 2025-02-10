@@ -1,0 +1,28 @@
+<script>
+    /*
+    PROBLEMA: SEQUÊNCIA DE FIBONACCI
+    O programa solicita ao usuário quantos números da sequência de Fibonacci ele deseja obter e os exibe na tela.
+    */
+
+    //ENTRADA
+    let quantidade = parseInt(prompt("Quantos números da sequência de Fibonacci você deseja obter?"));
+    
+    //PROCESSAMENTO
+    while (isNaN(quantidade) || quantidade <= 0) {
+        quantidade = parseInt(prompt("Entrada inválida! Digite um número inteiro positivo:"));
+    }
+
+    let atual = 0, proximo = 1, contador = 0;
+    let resultado = "";
+
+    while (contador < quantidade) {
+        resultado += atual + (contador < quantidade - 1 ? ", " : ""); // Adiciona vírgula apenas entre os números
+        let temp = atual;
+        atual = proximo;
+        proximo = temp + proximo;
+        contador++;
+    }
+
+    // SAÍDA
+    document.write(`Sequência de Fibonacci (${quantidade} números): ${resultado}`);
+</script>

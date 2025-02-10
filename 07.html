@@ -2,22 +2,69 @@
 <script>
     /*
     PROBLEMA: PESQUISA DE IDADE
-    Foi feita uma pesquisa entre os habitantes de uma região. Foram coletados os dados de idade, sexo (M/F) e salário. Faça um programa que calcule e mostre:
-
-    a) A média dos salários do grupo;
-    b) A maior e a menor idade do grupo;
-    c) A quantidade de mulheres na região;
-    d) A idade e o sexo da pessoa que possui o menor salário;
-
-    Finalize a entrada de dados ao ser digitada uma idade negativa.
+    Coleta idade, sexo e salário de habitantes e calcula:
+    a) Média dos salários do grupo;
+    b) Maior e menor idade do grupo;
+    c) Quantidade de mulheres;
+    d) Idade e sexo da pessoa com menor salário;
+    
+    Entrada de dados termina ao digitar uma idade negativa.
     */
 
     //ENTRADA
+    let somaSalarios = 0;
+    let maiorIdade = -1;
+    let menorIdade = Infinity;
+    let mulheres = 0;
+    let menorSalario = Infinity;
+    let idadeMenorSalario = 0;
+    let sexoMenorSalario = "";
+    let pessoas = 0;
 
+    //PROCESSSAMENTO
+    while (true) {
+        let idade = parseInt(prompt("Digite sua idade (Digite um valor negativo para sair):"));
 
-    //PROCESSAMENTO
+        if (idade < 0) break;
 
+        if (isNaN(idade) || idade === "") {
+            alert("Idade inválida! Digite um número válido.");
+            continue;
+        }
+
+        let sexo = prompt("Digite o sexo (M/F):").trim().toUpperCase();
+        if (sexo !== "M" && sexo !== "F") {
+            alert("Sexo inválido! Digite 'M' para masculino ou 'F' para feminino.");
+            continue;
+        }
+
+        let salario = parseFloat(prompt("Digite seu salário:"));
+        if (isNaN(salario) || salario < 0) {
+            alert("Salário inválido! Digite um número positivo.");
+            continue;
+        }
+
+        somaSalarios += salario;
+        // Calcula média 
+        if (idade > maiorIdade) maiorIdade = idade;
+        if (idade < menorIdade) menorIdade = idade;
+        if (sexo === "F") mulheres++;
+        if (salario < menorSalario) {
+            menorSalario = salario;
+            idadeMenorSalario = idade;
+            sexoMenorSalario = sexo;
+        }
+
+        pessoas++;
+    }
+
+    let mediaSalarios = pessoas > 0 ? (somaSalarios / pessoas).toFixed(2).replace(".", ",") : "0,00";
 
     //SAÍDA
-
+    document.write(`Resultados da Pesquisa:<br>;
+                    Média dos salários: R$ ${mediaSalarios}<br>;
+                    Maior idade: ${maiorIdade}<br>;
+                    Menor idade: ${menorIdade}<br>;
+                    Quantidade de mulheres: ${mulheres}<br>;
+                    Menor salário: R$ ${menorSalario.toFixed(2).replace(".", ",")} (Idade: ${idadeMenorSalario}, Sexo: ${sexoMenorSalario})<br>`);
 </script>
